@@ -1,0 +1,71 @@
+<?php
+/** @var $this \Zend\View\Renderer\PhpRenderer */
+/** @var  $usuario \Application\Entity\Usuario Usuario */
+
+$container  = new \Zend\Session\Container('session');
+$usuario    = $container->offsetGet('usuario');
+?>
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <ul class="sidebar-menu">+
+            <li class="treeview">
+                <a href=<?php echo $this->url('cliente/default', array('action' => 'dashboard'))?>>
+                    <i class="fa fa-dashboard"></i> <span>Principal</span>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href=<?php echo $this->url('conta/default', array('action' => 'listar')) ?>>
+                    <i class="fa fa-university" aria-hidden="true"></i> <span>Contas</span>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href=<?php echo $this->url('receita/default', array('action' => 'listar')) ?>>
+                    <i class="fa fa-money" aria-hidden="true"></i>Receitas</span>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href=<?php echo $this->url('despesa/default', array('action' => 'listar')) ?>>
+                    <i class="fa fa-money" aria-hidden="true"></i>Despesas</span>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href=<?php echo $this->url('transferencia/default', array('action' => 'listar')) ?>>
+                    <i class="fa fa-exchange" aria-hidden="true"></i> <span>Transferências</span>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href=<?php echo $this->url('cartao-de-credito/default', array('action' => 'listar')) ?>>
+                    <i class="fa fa-credit-card" aria-hidden="true"></i> <span>Cartão de crédito</span>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href=<?php echo $this->url('grafico/default', array('action' => 'listar')) ?>>
+                    <i class="fa fa-pie-chart" aria-hidden="true"></i> <span>Gráficos</span>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href=<?php echo $this->url('categoria/default', array('action' => 'listar')) ?>>
+                    <i class="fa fa-tag" aria-hidden="true"></i> <span>Categorias</span>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href=<?php echo $this->url('investimento/default', array('action' => 'listar')) ?>>
+                    <i class="fa fa-calculator" aria-hidden="true"></i> <span>Simular investimento</span>
+                </a>
+            </li>
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+

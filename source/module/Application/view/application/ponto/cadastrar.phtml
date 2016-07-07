@@ -1,0 +1,59 @@
+<?php $this->layout()->setVariable('titulo', 'Novo ponto');
+$form = $this->form;
+?>
+    <div class="box box-primary">
+        <!--<div class="box-header">
+            <h3 class="box-title"></h3>
+        </div>--><!-- /.box-header -->
+        <div class="box-body">
+
+            <form role="form" name="<?php echo $form->getName()?>" method="<?php echo $form->getAttribute('method'); ?>">
+                <div id="map" style="height: 400px; width: 100%"></div>
+                <input id="pac-input" class="controls" type="text" placeholder="Buscar local">
+
+                <?php
+                echo $this->partial('partial/form/general/quick/element/'.$form->get('lat')->getAttribute('type'), array(
+                    'element' => $form->get('lat'),
+                ));
+                ?>
+                <?php
+                echo $this->partial('partial/form/general/quick/element/'.$form->get('lng')->getAttribute('type'), array(
+                    'element' => $form->get('lng'),
+                ));
+                ?>
+
+                <?php
+                echo $this->partial('partial/form/general/quick/element/'.$form->get('textLat')->getAttribute('type'), array(
+                    'element' => $form->get('textLat'),
+                ));
+                ?>
+
+
+
+                <?php
+                echo $this->partial('partial/form/general/quick/element/'.$form->get('textLng')->getAttribute('type'), array(
+                    'element' => $form->get('textLng'),
+                ));
+                ?>
+                <?php
+                echo $this->partial('partial/form/general/quick/element/'.$form->get('numero')->getAttribute('type'), array(
+                    'element' => $form->get('numero'),
+                ));
+                ?>
+
+                <div class="box-footer">
+                    <button class="btn btn-primary" type="submit">Cadastrar</button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+<?php
+    $this->headLink()->appendStylesheet('/css/maps.css');
+    $this->headScript()->appendFile('/js/maps.js', 'text/javascript');
+    //$this->headScript()->appendFile('/js/maps_api.js', 'text/javascript');
+    $this->headScript()->appendFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyCTF67ah7E5LwDy167b0XW0Ajx8zQJ2Va0&libraries=places&callback=initAutocomplete', 'text/javascript');
+?>
