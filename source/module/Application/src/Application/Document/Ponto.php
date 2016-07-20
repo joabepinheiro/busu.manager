@@ -31,6 +31,15 @@ class Ponto
      */
     protected $numero;
 
+    /**
+     * @ODM\String
+     */
+    protected $endereco;
+
+    /**
+     * @ODM\ReferenceOne(targetDocument="Application\Document\Leitor", nullable=true)
+     */
+    protected $leitor;
 
     public function __construct(array $options = array()){
         (new ClassMethods())->hydrate($options, $this);
@@ -44,7 +53,7 @@ class Ponto
 
     public function __toString()
     {
-        return $this->getId();
+        return $this->getNumero() . ' - ' . $this->getEndereco();
 
     }
 
@@ -112,7 +121,40 @@ class Ponto
         $this->numero = $numero;
     }
 
-    
+    /**
+     * @return mixed
+     */
+    public function getEndereco()
+    {
+        return $this->endereco;
+    }
 
-    
+    /**
+     * @param mixed $endereco
+     */
+    public function setEndereco($endereco)
+    {
+        $this->endereco = $endereco;
+    }
+
+    /**
+     * @return \Application\Document\Leitor
+     */
+    public function getLeitor()
+    {
+        return $this->leitor;
+    }
+
+    /**
+     * @param  \Application\Document\Leitor $leitor
+     */
+    public function setLeitor($leitor)
+    {
+        $this->leitor = $leitor;
+    }
+
+
+   
+
+
 }

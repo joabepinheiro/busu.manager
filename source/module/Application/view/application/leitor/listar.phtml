@@ -22,7 +22,9 @@ $this->layout()->setVariable('titulo', 'Leitor');
         <table  class="table table-bordered table-striped" id="table-search-columns">
             <thead>
             <tr>
+                <th style="vertical-align:middle">Série</th>
                 <th style="vertical-align:middle">Modelo</th>
+                <th style="vertical-align:middle">Usado</th>
                 <th style="vertical-align:middle"></th>
                 <th style="vertical-align:middle"></th>
             </tr>
@@ -32,7 +34,13 @@ $this->layout()->setVariable('titulo', 'Leitor');
             <?php foreach($data as $row): ?>
                 <tr>
 
-                    <td style="vertical-align:middle"><?php echo $row->getModeo(); ?></td>
+                    <td style="vertical-align:middle"><?php echo $row->getSerie(); ?></td>
+                    <td style="vertical-align:middle"><?php echo $row->getModelo(); ?></td>
+                    <td style="vertical-align:middle">
+                        <?php if($row->isUsado()): ?>
+                            <i class="fa fa-check text-success"></i>
+                        <?php endif; ?>
+                    </td>
                     <td style="vertical-align:middle">
                         <a href="<?php echo $this->url('leitor/default', array('action'=>'editar', 'id' => $row->getId(),)); ?>">
                             <i class="fa fa-edit"></i>

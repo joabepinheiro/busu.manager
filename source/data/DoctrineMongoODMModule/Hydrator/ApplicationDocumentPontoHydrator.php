@@ -58,6 +58,31 @@ class ApplicationDocumentPontoHydrator implements HydratorInterface
             $this->class->reflFields['numero']->setValue($document, $return);
             $hydratedData['numero'] = $return;
         }
+
+        /** @Field(type="string") */
+        if (isset($data['endereco'])) {
+            $value = $data['endereco'];
+            $return = (string) $value;
+            $this->class->reflFields['endereco']->setValue($document, $return);
+            $hydratedData['endereco'] = $return;
+        }
+
+        /** @ReferenceOne */
+        if (isset($data['leitor'])) {
+            $reference = $data['leitor'];
+            if (isset($this->class->fieldMappings['leitor']['simple']) && $this->class->fieldMappings['leitor']['simple']) {
+                $className = $this->class->fieldMappings['leitor']['targetDocument'];
+                $mongoId = $reference;
+            } else {
+                $className = $this->unitOfWork->getClassNameForAssociation($this->class->fieldMappings['leitor'], $reference);
+                $mongoId = $reference['$id'];
+            }
+            $targetMetadata = $this->dm->getClassMetadata($className);
+            $id = $targetMetadata->getPHPIdentifierValue($mongoId);
+            $return = $this->dm->getReference($className, $id);
+            $this->class->reflFields['leitor']->setValue($document, $return);
+            $hydratedData['leitor'] = $return;
+        }
         return $hydratedData;
     }
 }

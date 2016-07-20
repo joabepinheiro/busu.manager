@@ -3,9 +3,6 @@ namespace Base\Controller;
 use Base\Form\DeletarForm;
 
 use Doctrine\Common\EventManager;
-use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\DriverManager;
-use Doctrine\ORM\EntityManager;
 use Zend\Form\Form;
 use Zend\Http\Request;
 use Zend\Mvc\Application;
@@ -41,6 +38,7 @@ class ActionController extends AbstractActionController {
     }
 
     public function  indexAction(){
+
         return $this->redirect()->toRoute($this->route, array('action' => 'listar'));
     }
 
@@ -51,11 +49,11 @@ class ActionController extends AbstractActionController {
 
         if($request->isPost()) {
             $form->setData($request->getPost());
+
             if($form->isValid()) {
                 $service = $this->getServiceLocator()->get($this->service);
-
                 $entity = $service->insert($request->getPost()->toArray());
-                
+
                 $this->flashMessenger()
                     ->setNamespace(FlashMessenger::NAMESPACE_SUCCESS)
                     ->addMessage($entity . ' cadastrado com sucesso');
@@ -78,13 +76,14 @@ class ActionController extends AbstractActionController {
         $repository = $this->getEm()->getRepository($this->entity);
         $entity = $repository->find($this->getPK());
 
+
         if(!$entity){
             return $this->redirect()->toRoute($this->route, array('action', 'listar'));
         }
 
         if($this->params()->fromRoute('id',0))
             $form->setData($entity->toArray());
-
+        
         if($request->isPost()) {
             $form->setData($request->getPost());
 

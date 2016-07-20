@@ -103,11 +103,10 @@ class PontoFilter implements InputFilterAwareInterface
                 ),
                 'validators' => array(
                     array(
-                        'name' =>'NotEmpty',
+                        'name' =>'StringLength',
                         'options' => array(
-                            'messages' => array(
-                                'isEmpty' => 'Informe o número do ponto'
-                            ),
+                            'min' => 5,
+                            'max' => 5,
                         ),
                     ),
                     array(
@@ -122,6 +121,25 @@ class PontoFilter implements InputFilterAwareInterface
                 ),
             ]));
 
+
+            $inputFilter->add($factory->createInput([
+                'name' => 'leitor',
+                'required' => false,
+                'filters' => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' =>'NotEmpty',
+                        'options' => array(
+                            'messages' => array(
+                                'isEmpty' => 'Informe a latitude'
+                            ),
+                        ),
+                    ),
+                ),
+            ]));
 
 
             $this->inputFilter = $inputFilter;

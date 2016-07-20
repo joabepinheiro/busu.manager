@@ -17,6 +17,20 @@ class LeitorForm extends AbstractForm{
         $id->setValue(null);
         $this->add($id);
 
+        $usado = new Element\Hidden('usado');
+        $usado->setValue(0);
+        $this->add($usado);
+
+        $marca = new Element\Text('marca');
+        $marca->setLabel('Marca')
+            ->setAttributes(array(
+                'class' => 'form-control'
+            ));
+        $marca->setAttributes(array(
+            'placeholder' => 'Marca'
+        ));
+        $this->add($marca);
+
         $modelo = new Element\Text('modelo');
         $modelo->setLabel('Modelo')
             ->setAttributes(array(
@@ -27,6 +41,15 @@ class LeitorForm extends AbstractForm{
         ));
         $this->add($modelo);
 
+        $serie = new Element\Text('serie');
+        $serie->setLabel('Número de série')
+            ->setAttributes(array(
+                'class' => 'form-control'
+            ));
+        $serie->setAttributes(array(
+            'placeholder' => 'Número de série'
+        ));
+        $this->add($serie);
 
         $submit = new Element\Submit('submit');
         $submit->setLabel($_name);

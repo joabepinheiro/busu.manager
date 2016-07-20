@@ -36,11 +36,35 @@ class ApplicationDocumentLeitorHydrator implements HydratorInterface
         }
 
         /** @Field(type="string") */
-        if (isset($data['modeo'])) {
-            $value = $data['modeo'];
+        if (isset($data['marca'])) {
+            $value = $data['marca'];
             $return = (string) $value;
-            $this->class->reflFields['modeo']->setValue($document, $return);
-            $hydratedData['modeo'] = $return;
+            $this->class->reflFields['marca']->setValue($document, $return);
+            $hydratedData['marca'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['modelo'])) {
+            $value = $data['modelo'];
+            $return = (string) $value;
+            $this->class->reflFields['modelo']->setValue($document, $return);
+            $hydratedData['modelo'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['serie'])) {
+            $value = $data['serie'];
+            $return = (string) $value;
+            $this->class->reflFields['serie']->setValue($document, $return);
+            $hydratedData['serie'] = $return;
+        }
+
+        /** @Field(type="boolean") */
+        if (isset($data['usado'])) {
+            $value = $data['usado'];
+            $return = (bool) $value;
+            $this->class->reflFields['usado']->setValue($document, $return);
+            $hydratedData['usado'] = $return;
         }
         return $hydratedData;
     }

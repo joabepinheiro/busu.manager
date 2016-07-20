@@ -22,6 +22,7 @@ $this->layout()->setVariable('titulo', 'Etiqueta');
         <table  class="table table-bordered table-striped" id="table-search-columns">
             <thead>
             <tr>
+                <th style="vertical-align:middle">Série</th>
                 <th style="vertical-align:middle">Modelo</th>
                 <th style="vertical-align:middle"></th>
                 <th style="vertical-align:middle"></th>
@@ -32,6 +33,7 @@ $this->layout()->setVariable('titulo', 'Etiqueta');
             <?php foreach($data as $row): ?>
                 <tr>
 
+                    <td style="vertical-align:middle"><?php echo $row->getSerie(); ?></td>
                     <td style="vertical-align:middle"><?php echo $row->getModelo(); ?></td>
                     <td style="vertical-align:middle">
                         <a href="<?php echo $this->url('etiqueta/default', array('action'=>'editar', 'id' => $row->getId(),)); ?>">

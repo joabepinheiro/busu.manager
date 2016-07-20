@@ -2,11 +2,12 @@
 
 namespace Application\Service;
 
-use Base\Service\Mongo;
+use Doctrine\ODM\MongoDB\DocumentManager;
 
 class Linha extends AbstractService{
 
-    public function __construct($collection = 'linha') {
-        parent::__construct($collection);
+    public function __construct(DocumentManager $dm){
+        parent::__construct($dm);
+        $this->entity = 'Application\Document\Linha';
     }
 }

@@ -9,14 +9,23 @@
 
 namespace Application;
 
+use Application\Form\EtiquetaForm;
+use Application\Form\ItinerarioForm;
+use Application\Form\LogForm;
+use Application\Form\OnibusForm;
 use Application\Form\PontoForm;
+use Application\Service\Etiqueta;
+use Application\Service\Itinerario;
 use Application\Service\Leitor;
+use Application\Service\Linha;
+use Application\Service\Log;
 use Application\Service\Onibus;
 use Application\Service\Ponto;
 use Application\Service\Usuario;
 use Zend\I18n\Translator\Translator;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Session\Container;
 use Zend\Validator\AbstractValidator;
 
 class Module
@@ -77,7 +86,7 @@ class Module
                     return new Onibus($sm->get('doctrine.documentmanager.odm_default'));
                  },
                     'Service\Etiqueta' => function($sm){
-                    return new Onibus($sm->get('doctrine.documentmanager.odm_default'));
+                    return new Etiqueta($sm->get('doctrine.documentmanager.odm_default'));
                 },
                 'Service\Leitor' => function($sm){
                     return new Leitor($sm->get('doctrine.documentmanager.odm_default'));
@@ -88,8 +97,26 @@ class Module
                 'Service\Ponto' => function($sm){
                     return new Ponto($sm->get('doctrine.documentmanager.odm_default'));
                 },
+                'Service\Linha' => function($sm){
+                    return new Linha($sm->get('doctrine.documentmanager.odm_default'));
+                },
+                'Service\Itinerario' => function($sm){
+                    return new Itinerario($sm->get('doctrine.documentmanager.odm_default'));
+                },
+                'Service\Log' => function($sm){
+                    return new Log($sm->get('doctrine.documentmanager.odm_default'));
+                },
                 'Application\Form\PontoForm' => function($sm){
                     return new PontoForm(null, $sm->get('doctrine.documentmanager.odm_default'));
+                },
+                'Application\Form\LogForm' => function($sm){
+                    return new LogForm(null, $sm->get('doctrine.documentmanager.odm_default'));
+                },
+                'Application\Form\OnibusForm' => function($sm){
+                    return new OnibusForm(null, $sm->get('doctrine.documentmanager.odm_default'));
+                },
+                'Application\Form\ItinerarioForm' => function($sm){
+                    return new ItinerarioForm(null, $sm->get('doctrine.documentmanager.odm_default'));
                 },
             ),
             

@@ -6,6 +6,7 @@ use Zend\Hydrator\ClassMethods;
 
 /**
  * @ODM\Document
+ * @ODM\Document(repositoryClass="Application\Document\LeitorRepository")
  */
 class Leitor
 {
@@ -17,7 +18,23 @@ class Leitor
     /**
      * @ODM\String
      */
-    protected $modeo;
+    protected $marca;
+
+    /**
+     * @ODM\String
+     */
+    protected $modelo;
+
+    /**
+     * @ODM\String
+     */
+    protected $serie;
+
+    /**
+     * @ODM\Boolean
+     */
+    protected $usado;
+
 
     public function __construct(array $options = array()){
         (new ClassMethods())->hydrate($options, $this);
@@ -45,24 +62,77 @@ class Leitor
     /**
      * @return mixed
      */
-    public function getModeo()
+    public function getModelo()
     {
-        return $this->modeo;
+        return $this->modelo;
     }
 
     /**
-     * @param mixed $modeo
+     * @param mixed $modelo
      */
-    public function setModeo($modeo)
+    public function setModelo($modelo)
     {
-        $this->modeo = $modeo;
+        $this->modelo = $modelo;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMarca()
+    {
+        return $this->marca;
+    }
+
+    /**
+     * @param mixed $marca
+     */
+    public function setMarca($marca)
+    {
+        $this->marca = $marca;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
+
+    /**
+     * @param mixed $serie
+     */
+    public function setSerie($serie)
+    {
+        $this->serie = $serie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsado()
+    {
+        return $this->usado;
+    }
+
+    public function isUsado(){
+        return $this->usado;
+    }
+    
+    /**
+     * @param mixed $usado
+     */
+    public function setUsado($usado)
+    {
+        $this->usado = $usado;
+    }
+
 
 
     public function __toString()
     {
-        if(!is_null($this->getModeo())){
-            return $this->getModeo();
+        if(!is_null($this->getModelo())){
+            return  $this->getSerie()  . ' - ' .$this->getModelo();
         }
         return $this->getId();
 

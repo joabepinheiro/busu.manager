@@ -35,11 +35,26 @@ $form = $this->form;
                     'element' => $form->get('textLng'),
                 ));
                 ?>
+
+                <?php
+                echo $this->partial('partial/form/general/quick/element/'.$form->get('endereco')->getAttribute('type'), array(
+                    'element' => $form->get('endereco'),
+                ));
+                ?>
+
+
                 <?php
                 echo $this->partial('partial/form/general/quick/element/'.$form->get('numero')->getAttribute('type'), array(
                     'element' => $form->get('numero'),
                 ));
                 ?>
+
+                <?php
+                echo $this->partial('partial/form/general/quick/element/'.$form->get('leitor')->getAttribute('type'), array(
+                    'element' => $form->get('leitor'),
+                ));
+                ?>
+
 
                 <div class="box-footer">
                     <button class="btn btn-primary" type="submit">Cadastrar</button>

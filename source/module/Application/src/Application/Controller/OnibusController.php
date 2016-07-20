@@ -10,6 +10,7 @@ class OnibusController extends ActionController
     public function __construct()
     {
         $this->slug = 'onibus';
+        $this->formService = true;
         parent::__construct();
     }
 

@@ -17,7 +17,12 @@ class Onibus
     /**
      * @ODM\String
      */
-    protected $placa;
+    protected $numero;
+
+    /**
+     * @ODM\ReferenceOne(targetDocument="Application\Document\Etiqueta", nullable=true)
+     */
+    protected $etiqueta;
 
     public function __construct(array $options = array()){
         (new ClassMethods())->hydrate($options, $this);
@@ -45,18 +50,38 @@ class Onibus
     /**
      * @return mixed
      */
-    public function getPlaca()
+    public function getNumero()
     {
-        return $this->placa;
+        return $this->numero;
     }
 
     /**
-     * @param mixed $placa
+     * @param mixed $numero
      */
-    public function setPlaca($placa)
+    public function setNumero($numero)
     {
-        $this->placa = $placa;
+        $this->numero = $numero;
     }
+
+    
+
+    /**
+     * @return mixed
+     */
+    public function getEtiqueta()
+    {
+        return $this->etiqueta;
+    }
+
+    /**
+     * @param mixed $etiqueta
+     */
+    public function setEtiqueta($etiqueta)
+    {
+        $this->etiqueta = $etiqueta;
+    }
+
+
 
     public function __toString()
     {

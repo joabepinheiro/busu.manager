@@ -76,6 +76,50 @@ return array(
                     ),
                 ),
             ),
+            'linha' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/linha',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Linha',
+                        'action'        => 'listar',
+                        'module'        => 'Application'
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action[/:id]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => null
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'controller'    => 'Linha',
+                            )
+                        ),
+                    ),
+                    'paginator' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action/[page/:page]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'constraints' => array(
+                                'page' => '\d+',
+                            ),
+                        ),
+                    )
+
+                ),
+            ),
             'onibus' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -252,6 +296,50 @@ return array(
 
                 ),
             ),
+            'itinerario' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/itinerario',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Itinerario',
+                        'action'        => 'listar',
+                        'module'        => 'Application'
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action[/:id]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => null
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'controller'    => 'Itinerario',
+                            )
+                        ),
+                    ),
+                    'paginator' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action/[page/:page]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'constraints' => array(
+                                'page' => '\d+',
+                            ),
+                        ),
+                    )
+
+                ),
+            ),
             'leitor' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -277,6 +365,50 @@ return array(
                             'defaults' => array(
                                 '__NAMESPACE__' => 'Application\Controller',
                                 'controller'    => 'Leitor',
+                            )
+                        ),
+                    ),
+                    'paginator' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action/[page/:page]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'constraints' => array(
+                                'page' => '\d+',
+                            ),
+                        ),
+                    )
+
+                ),
+            ),
+            'log' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/log',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Log',
+                        'action'        => 'listar',
+                        'module'        => 'Application'
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action[/:id]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => null
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'controller'    => 'Log',
                             )
                         ),
                     ),
@@ -340,6 +472,50 @@ return array(
 
                 ),
             ),
+            'itinerário' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/itinerário',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Itinerário',
+                        'action'        => 'listar',
+                        'module'        => 'Application'
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action[/:id]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => null
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'controller'    => 'Itinerário',
+                            )
+                        ),
+                    ),
+                    'paginator' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action/[page/:page]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'constraints' => array(
+                                'page' => '\d+',
+                            ),
+                        ),
+                    )
+
+                ),
+            ),
 
         ),
     ),
@@ -359,6 +535,27 @@ return array(
                 'label' => 'Home',
                 'route' => 'home',
                 'pages' => array(
+                    array(
+                        'label'  => 'Linha',
+                        'route'  => 'linha/default',
+                        'pages'  => array(
+                            array(
+                                'label'  => 'Cadastrar',
+                                'route'  => 'linha/default',
+                                'action' => 'cadastrar',
+                            ),
+                            array(
+                                'label'  => 'Editar',
+                                'route'  => 'linha/default',
+                                'action' => 'editar',
+                            ),
+                            array(
+                                'label'  => 'Listar',
+                                'route'  => 'linha/default',
+                                'action' => 'listar',
+                            ),
+                        )
+                    ),
                     array(
                         'label'  => 'Ônibus',
                         'route'  => 'onibus/default',
@@ -426,6 +623,9 @@ return array(
             'Application\Controller\Usuario' => Controller\UsuarioController::class,
             'Application\Controller\Administrador' => Controller\AdministradorController::class,
             'Application\Controller\Ponto' => Controller\PontoController::class,
+            'Application\Controller\Linha' => Controller\LinhaController::class,
+            'Application\Controller\Itinerario' => Controller\ItinerarioController::class,
+            'Application\Controller\Log' => Controller\LogController::class,
         ),
     ),
     'view_manager' => array(

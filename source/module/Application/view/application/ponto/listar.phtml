@@ -22,7 +22,9 @@ $this->layout()->setVariable('titulo', 'Pontos');
         <table  class="table table-bordered table-striped" id="table-search-columns">
             <thead>
             <tr>
-                <th style="vertical-align:middle">Modelo</th>
+                <th style="vertical-align:middle">Número</th>
+                <th style="vertical-align:middle">Endereço</th>
+                <th style="vertical-align:middle">Leitor</th>
                 <th style="vertical-align:middle"></th>
                 <th style="vertical-align:middle"></th>
             </tr>
@@ -31,15 +33,16 @@ $this->layout()->setVariable('titulo', 'Pontos');
             <tbody>
             <?php foreach($data as $row): ?>
                 <tr>
-
-                    <td style="vertical-align:middle"><?php echo $row->getModelo(); ?></td>
+                    <td style="vertical-align:middle"><?php echo $row->getNumero(); ?></td>
+                    <td style="vertical-align:middle"><?php echo $row->getEndereco(); ?></td>
+                    <td style="vertical-align:middle"><?php echo  (!is_null($row->getLeitor())) ? $row->getLeitor()->__toString() : ''; ?></td>
                     <td style="vertical-align:middle">
-                        <a href="<?php echo $this->url('etiqueta/default', array('action'=>'editar', 'id' => $row->getId(),)); ?>">
+                        <a href="<?php echo $this->url('ponto/default', array('action'=>'editar', 'id' => $row->getId(),)); ?>">
                             <i class="fa fa-edit"></i>
                         </a>
                     </td>
                     <td style="vertical-align:middle">
-                        <a href="<?php echo $this->url('etiqueta/default', array('action'=>'deletar', 'id' => $row->getId(),)); ?>">
+                        <a href="<?php echo $this->url('ponto/default', array('action'=>'deletar', 'id' => $row->getId(),)); ?>">
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>

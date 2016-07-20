@@ -1,0 +1,55 @@
+<?php
+/** @var  $row \Application\Document\Log*/
+$data = $this->data;
+$this->layout()->setVariable('titulo', 'Log');
+?>
+
+
+<div class="row" style="margin-top: -35px; margin-bottom: 10px;">
+    <div class="col-lg-12">
+        <a href="<?php echo $this->url('log/default', array('action'=>'cadastrar',)); ?>" class="btn btn-primary pull-right">
+            <i class="fa fa-plus"></i>
+            Simular log
+        </a>
+    </div>
+</div>
+
+<div class="box">
+    <!--<div class="box-header with-border">
+    </div>-->
+    <div class="box-body">
+        <?php echo $this->partial('partial/messages');?>
+        <table  class="table table-bordered table-striped" id="table-search-columns">
+            <thead>
+            <tr>
+                <th style="vertical-align:middle">Leitor</th>
+                <th style="vertical-align:middle">Etiqueta</th>
+                <th style="vertical-align:middle">Enviado em</th>
+                <th style="vertical-align:middle"></th>
+                <th style="vertical-align:middle"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <?php foreach($data as $row): ?>
+                <tr>
+
+                    <td style="vertical-align:middle"><?php echo $row->getLeitor(); ?></td>
+                    <td style="vertical-align:middle"><?php echo $row->getEtiqueta(); ?></td>
+                    <td style="vertical-align:middle"><?php echo "data"; //$row->getCreateAt()->); ?></td>
+                    <td style="vertical-align:middle">
+                        <a href="<?php echo $this->url('log/default', array('action'=>'editar', 'id' => $row->getId(),)); ?>">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                    </td>
+                    <td style="vertical-align:middle">
+                        <a href="<?php echo $this->url('log/default', array('action'=>'deletar', 'id' => $row->getId(),)); ?>">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div><!-- /.box-body -->
+</div><!-- /.box -->

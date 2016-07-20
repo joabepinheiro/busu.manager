@@ -26,7 +26,7 @@ abstract class AbstractService {
         }elseif(is_object($data)){
             $entity = $data;
         }
-
+        
         $this->documentManager->persist($entity);
         $this->documentManager->flush();
         return $entity;

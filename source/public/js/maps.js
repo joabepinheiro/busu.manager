@@ -19,6 +19,7 @@ function initAutocomplete() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
+
     document.getElementById('lat').value = lat;
     document.getElementById('lng').value = lng;
 
@@ -38,6 +39,8 @@ function initAutocomplete() {
 
         document.getElementById('textLat').value = event.latLng.lat();
         document.getElementById('textLng').value = event.latLng.lng();
+
+        atualizarEndereco(marker.getPosition().lat(), marker.getPosition().lng() );
     });
 
     // Create the search box and link it to the UI element.
@@ -86,6 +89,8 @@ function initAutocomplete() {
             document.getElementById('textLat').value = marker.getPosition().lat();
             document.getElementById('textLng').value = marker.getPosition().lng();
 
+            atualizarEndereco(marker.getPosition().lat(), marker.getPosition().lng() );
+
 
             google.maps.event.addListener(marker, 'drag', function (event) {
                 document.getElementById('lat').value = event.latLng.lat();
@@ -93,6 +98,9 @@ function initAutocomplete() {
 
                 document.getElementById('textLat').value = event.latLng.lat();
                 document.getElementById('textLng').value = event.latLng.lng();
+
+                atualizarEndereco(marker.getPosition().lat(), marker.getPosition().lng() );
+
             });
 
 
@@ -109,7 +117,27 @@ function initAutocomplete() {
 
         map.fitBounds(bounds);
     });
+
+
 }
+
+
+
+function atualizarEndereco(lat, lng) {
+    var latlng = lat + "," +lng;
+    var url = "http://maps.googleapis.com/maps/api/geocode/json?latlng="+latlng;
+
+    $.getJSON(url, function (data) {
+        for(var i=0;i<data.results.length;i++)
+        {
+            var adress = data.results[i].formatted_address;
+            document.getElementById('endereco').value = adress;
+            break;
+        }
+    });
+}
+
+
 
 function toggleBounce() {
     if (marker.getAnimation() !== null) {
